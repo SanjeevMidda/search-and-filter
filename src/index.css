@@ -9,4 +9,72 @@
   justify-content: center;
   align-items: center;
   height: 100dvh;
+  flex-direction: column;
+}
+
+.mainWrapper {
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 20px;
+  width: 75%;
+  height: 34%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mainUserDataContainer {
+  width: 70%;
+}
+
+.headings {
+  display: flex;
+  justify-content: space-between;
+
+  h2 {
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+}
+
+.userinfoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterContainer {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+input {
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 20px;
+  width: 60%;
+  height: 30px;
+  padding-left: 12px;
+}
+
+select {
+  background-color: "blue";
+}
+
+#title {
+  position: absolute;
+  top: 240px;
+  left: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: orangered;
+  margin-right: 20px;
 }
