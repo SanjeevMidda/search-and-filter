@@ -33,8 +33,12 @@ function App() {
 
   return (
     <div className="App">
-      {/* Display user data */}
+      <div id="title">
+        <div className="circle"></div>
+        <h1>Zable Admin</h1>
+      </div>
 
+      {/* Display user data */}
       <div className="mainWrapper">
         <div className="filterContainer">
           <input type="text" />
@@ -73,11 +77,8 @@ function App() {
           </div>
         </div>
       </div>
-
       {/* Controlled inputs */}
-
       {/* Search input */}
-
       {/* Role filter */}
     </div>
   );
