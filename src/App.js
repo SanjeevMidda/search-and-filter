@@ -35,21 +35,42 @@ function App() {
     <div className="App">
       {/* Display user data */}
 
-      <div className="mainUserDataContainer">
-        <div className="headings">
-          <h2>NAME</h2>
-          <h2>ROLE</h2>
+      <div className="mainWrapper">
+        <div className="filterContainer">
+          <input type="text" />
+          <label>
+            <select
+              style={{
+                // background: `linear-gradient(white, purple)`,
+                // border: "grey",
+                height: "30px",
+                width: "100px",
+              }}
+            >
+              <option value="all">All</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+              <option value="manager">Manager</option>
+            </select>
+          </label>
         </div>
 
-        <div className="userData">
-          {users.map((user) => {
-            return (
-              <div className="userinfoContainer">
-                <p>{user.name}</p>
-                <p>{user.role}</p>
-              </div>
-            );
-          })}
+        <div className="mainUserDataContainer">
+          <div className="headings">
+            <h2>NAME</h2>
+            <h2>ROLE</h2>
+          </div>
+
+          <div className="userData">
+            {users.map((user) => {
+              return (
+                <div className="userinfoContainer">
+                  <p>{user.name}</p>
+                  <p>{user.role}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
