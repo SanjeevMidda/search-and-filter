@@ -65,7 +65,7 @@ select {
 #title {
   position: absolute;
   top: 180px;
-  left: 100px;
+  left: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
