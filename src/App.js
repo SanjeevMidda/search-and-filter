@@ -32,9 +32,17 @@ function App() {
     { id: 5, name: "Jack Cork", role: "User" },
   ];
 
-  // filter by input
-
   const [userData, setUserData] = useState(users);
+  const [userInput, setUserInput] = useState("");
+
+  // saving user input
+  const savingUserInput = (input) => {
+    setUserInput(input.target.value);
+    console.log(userInput);
+  };
+
+  // filter by input
+  const filterbyInput = () => {};
 
   return (
     <div className="App">
@@ -46,7 +54,12 @@ function App() {
       {/* Display user data */}
       <div className="mainWrapper">
         <div className="filterContainer">
-          <input type="text" />
+          <input
+            type="text"
+            value={userInput}
+            onChange={(e) => savingUserInput(e)}
+            placeholder="Enter name"
+          />
           <label>
             <select
               style={{
