@@ -1,26 +1,8 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import "./index.css";
 
 function App() {
-  // purpose: Build a React app that displays a list of users and allows filtering the list using multiple controlled inputs.
-
-  // Requirements
-
-  //   3. Combined filtering logic
-  // Users must be filtered using both:
-  // - search text
-  // - selected role
-
-  // Filtering must be:
-  // - case-insensitive
-  // - resilient to leading/trailing spaces
-
-  // lf:
-  // - search is empty → do not filter by name
-  // - role is "All" → do not filter by
-
-  // add user data
-  const users = [
+  const USERS = [
     { id: 1, name: "Alice Johnson", role: "Admin" },
 
     { id: 2, name: "Bob Smith", role: "User" },
@@ -35,32 +17,21 @@ function App() {
   const [userInput, setUserInput] = useState("");
   const [role, setRole] = useState("all");
 
-  // saving user input
-  const savingUserInput = (input) => {
-    setUserInput(input.target.value);
+  const handleInputChange = (e) => setUserInput(e.target.value);
+
+  const handleDropdownChange = (e) => {
+    setRole(e.target.value);
   };
 
-  // filter by input
-  const filteredUsers = users.filter((user) => user.name.includes(userInput));
+  const filteredUsers = useMemo(() => {
+    const normalizedInput = userInput.trim().toLowerCase();
 
-  // Saving user dropdown selection
-  const roleSelectedFromDropdown = (roleSelected) => {
-    setRole(roleSelected.target.value);
-  };
-
-  console.log(role);
-
-  // filter by dropdown
-  const filterByRole = users.filter((user) =>
-    role === "all" ? true : user.role.toLowerCase() === role
-  );
-
-  // combined filtering
-  const finalFiltering = users.filter(
-    (user) =>
-      user.name.includes(userInput) &&
-      (role === "all" ? true : user.role.toLowerCase() === role)
-  );
+    return USERS.filter(
+      (user) =>
+        user.name.toLowerCase().includes(normalizedInput) &&
+        (role === "all" || user.role.toLowerCase() === role)
+    );
+  }, [userInput, role]);
 
   return (
     <div className="App">
@@ -75,20 +46,11 @@ function App() {
           <input
             type="text"
             value={userInput}
-            onChange={(e) => savingUserInput(e)}
+            onChange={handleInputChange}
             placeholder="Enter name"
           />
           <label>
-            <select
-              style={{
-                // background: `linear-gradient(white, purple)`,
-                // border: "grey",
-                height: "30px",
-                width: "100px",
-              }}
-              value={role}
-              onChange={(e) => roleSelectedFromDropdown(e)}
-            >
+            <select value={role} onChange={handleDropdownChange}>
               <option value="all">All</option>
               <option value="admin">Admin</option>
               <option value="user">User</option>
@@ -104,22 +66,19 @@ function App() {
           </div>
 
           <div className="userData">
-            {finalFiltering.map((user) => {
-              return (
-                <div className="userinfoContainer">
-                  <p>{user.name}</p>
-                  <p>{user.role}</p>
-                </div>
-              );
-            })}
+            {filteredUsers.map((user) => (
+              <div className="userinfoContainer" key={user.id}>
+                <p>{user.name}</p>
+                <p>{user.role}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-      {/* Controlled inputs */}
-      {/* Search input */}
-      {/* Role filter */}
     </div>
   );
 }
 
 export default App;
+
+// Cleaning up code and setting up case insentive and trailing and leading spaces / moved inline CSS to index.css file/ removed any verbose comments
