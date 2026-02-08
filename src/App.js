@@ -48,12 +48,14 @@ function App() {
     setRole(roleSelected.target.value);
   };
 
+  console.log(role);
+
   // filter by dropdown
   const filterByRole = users.filter((user) =>
     role === "all" ? true : user.role.toLowerCase() === role
   );
 
-  console.log(filterByRole);
+  console.log(role);
 
   return (
     <div className="App">
@@ -79,6 +81,7 @@ function App() {
                 height: "30px",
                 width: "100px",
               }}
+              value={role}
               onChange={(e) => roleSelectedFromDropdown(e)}
             >
               <option value="all">All</option>
