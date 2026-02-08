@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./index.css";
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
 
     { id: 5, name: "Jack Cork", role: "User" },
   ];
+
+  // filter by input
+
+  const [userData, setUserData] = useState(users);
 
   return (
     <div className="App">
@@ -66,7 +71,7 @@ function App() {
           </div>
 
           <div className="userData">
-            {users.map((user) => {
+            {userData.map((user) => {
               return (
                 <div className="userinfoContainer">
                   <p>{user.name}</p>
