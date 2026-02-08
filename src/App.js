@@ -33,6 +33,7 @@ function App() {
   ];
 
   const [userInput, setUserInput] = useState("");
+  const [role, setRole] = useState("All");
 
   // saving user input
   const savingUserInput = (input) => {
@@ -41,6 +42,13 @@ function App() {
 
   // filter by input
   const filteredUsers = users.filter((user) => user.name.includes(userInput));
+
+  // Saving user dropdown selection
+  const roleSelectedFromDropdown = (roleSelected) => {
+    setRole(roleSelected.target.value);
+  };
+
+  // filter by dropdown
 
   return (
     <div className="App">
@@ -66,6 +74,7 @@ function App() {
                 height: "30px",
                 width: "100px",
               }}
+              onChange={(e) => roleSelectedFromDropdown(e)}
             >
               <option value="all">All</option>
               <option value="admin">Admin</option>
