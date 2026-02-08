@@ -33,7 +33,7 @@ function App() {
   ];
 
   const [userInput, setUserInput] = useState("");
-  const [role, setRole] = useState("All");
+  const [role, setRole] = useState("all");
 
   // saving user input
   const savingUserInput = (input) => {
@@ -49,6 +49,11 @@ function App() {
   };
 
   // filter by dropdown
+  const filterByRole = users.filter((user) =>
+    role === "all" ? true : user.role.toLowerCase() === role
+  );
+
+  console.log(filterByRole);
 
   return (
     <div className="App">
@@ -91,7 +96,7 @@ function App() {
           </div>
 
           <div className="userData">
-            {filteredUsers.map((user) => {
+            {filterByRole.map((user) => {
               return (
                 <div className="userinfoContainer">
                   <p>{user.name}</p>
