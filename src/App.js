@@ -1,19 +1,19 @@
 import { useMemo, useState } from "react";
 import "./index.css";
 
+const USERS = [
+  { id: 1, name: "Alice Johnson", role: "Admin" },
+
+  { id: 2, name: "Bob Smith", role: "User" },
+
+  { id: 3, name: "Charlie Brown", role: "User" },
+
+  { id: 4, name: "Diana Prince", role: "Manager" },
+
+  { id: 5, name: "Jack Cork", role: "User" },
+];
+
 function App() {
-  const USERS = [
-    { id: 1, name: "Alice Johnson", role: "Admin" },
-
-    { id: 2, name: "Bob Smith", role: "User" },
-
-    { id: 3, name: "Charlie Brown", role: "User" },
-
-    { id: 4, name: "Diana Prince", role: "Manager" },
-
-    { id: 5, name: "Jack Cork", role: "User" },
-  ];
-
   const [userInput, setUserInput] = useState("");
   const [role, setRole] = useState("all");
 
@@ -40,7 +40,6 @@ function App() {
         <h1>Zable Admin</h1>
       </div>
 
-      {/* Display user data */}
       <div className="mainWrapper">
         <div className="filterContainer">
           <input
@@ -49,7 +48,7 @@ function App() {
             onChange={handleInputChange}
             placeholder="Enter name"
           />
-          <label>
+          <label htmlFor="roleSelect">
             <select value={role} onChange={handleDropdownChange}>
               <option value="all">All</option>
               <option value="admin">Admin</option>
@@ -80,5 +79,3 @@ function App() {
 }
 
 export default App;
-
-// Cleaning up code and setting up case insentive and trailing and leading spaces / moved inline CSS to index.css file/ removed any verbose comments
