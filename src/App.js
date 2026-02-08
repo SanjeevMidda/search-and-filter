@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
 
 function App() {
@@ -32,17 +32,15 @@ function App() {
     { id: 5, name: "Jack Cork", role: "User" },
   ];
 
-  const [userData, setUserData] = useState(users);
   const [userInput, setUserInput] = useState("");
 
   // saving user input
   const savingUserInput = (input) => {
     setUserInput(input.target.value);
-    console.log(userInput);
   };
 
   // filter by input
-  const filterbyInput = () => {};
+  const filteredUsers = users.filter((user) => user.name.includes(userInput));
 
   return (
     <div className="App">
@@ -84,7 +82,7 @@ function App() {
           </div>
 
           <div className="userData">
-            {userData.map((user) => {
+            {filteredUsers.map((user) => {
               return (
                 <div className="userinfoContainer">
                   <p>{user.name}</p>
