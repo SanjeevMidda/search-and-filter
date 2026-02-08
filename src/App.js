@@ -55,7 +55,12 @@ function App() {
     role === "all" ? true : user.role.toLowerCase() === role
   );
 
-  console.log(role);
+  // combined filtering
+  const finalFiltering = users.filter(
+    (user) =>
+      user.name.includes(userInput) &&
+      (role === "all" ? true : user.role.toLowerCase() === role)
+  );
 
   return (
     <div className="App">
@@ -99,7 +104,7 @@ function App() {
           </div>
 
           <div className="userData">
-            {filterByRole.map((user) => {
+            {finalFiltering.map((user) => {
               return (
                 <div className="userinfoContainer">
                   <p>{user.name}</p>
